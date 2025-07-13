@@ -11,25 +11,50 @@ body {
   text-align: center;
   position: relative;
   z-index: 1;
-  background: #0f2027; /* fallback */
+  background: #0f2027;
   color: white;
   overflow-x: hidden;
 }
 
-/* Rain Background Animation */
-body::before {
-  content: "";
+/* Firefly effect */
+.fireflies {
   position: fixed;
   top: 0;
   left: 0;
-  height: 100%;
   width: 100%;
-  background: url('https://i.ibb.co/r6wF4bT/rain.gif') repeat;
-  opacity: 0.1;
+  height: 100%;
+  pointer-events: none;
   z-index: -1;
+  overflow: hidden;
 }
 
-/* Animated Heading */
+.fireflies span {
+  position: absolute;
+  display: block;
+  width: 10px;
+  height: 10px;
+  background: #00ffe7;
+  border-radius: 50%;
+  box-shadow: 0 0 10px #00ffe7, 0 0 20px #00ffe7;
+  animation: moveFirefly 20s linear infinite;
+  opacity: 0.6;
+}
+
+@keyframes moveFirefly {
+  0% {
+    transform: translateY(0) translateX(0) scale(1);
+    opacity: 0.4;
+  }
+  50% {
+    transform: translateY(-100vh) translateX(50vw) scale(1.5);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(0) translateX(0) scale(1);
+    opacity: 0.2;
+  }
+}
+
 h1 {
   font-size: 3rem;
   font-family: 'Orbitron', sans-serif;
@@ -132,7 +157,7 @@ h2 {
   transform: scale(1.1);
 }
 
-/* Responsive Tweaks */
+/* Responsive */
 @media (max-width: 600px) {
   h1 { font-size: 2rem; }
   h2 { font-size: 1.1rem; }
